@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #wrap{
+            width:700px;
+            margin:0 auto;
+            background-color: #148800;
+            text-align:center;
+            position:relative;
+            font-size:20px;
+        }
+        .top{
+            width:100px;
+            height:30px;
+            background-color:#EEEEEE;
+            margin:0 auto;
+        }
+        .imgs{
+            margin:0 auto;
+        }
+        .prev{
+            width:40px;
+            height:80px;
+            position:absolute;
+            top:50%;
+            left:0;
+            font-size:40px;
+        }
+        .next{
+            width:40px;
+            height:80px;
+            position:absolute;
+            top:50%;
+            right:0;
+            font-size:40px;
+        }
+        .bottom{
+            width:400px;
+            display:flex;
+            position:absolute;
+            top:500px;
+            left:250px;
+        }
+        .bottom>i{
+            display:block;
+            content:'';
+            width:40px;
+            height:40px;
+            background-color: #eee;
+            border-radius:50%;
+            margin:10px;
+
+        }
+        .active{
+            background-color:yellow;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+     <div class="top"><span>1</span>/4 </div>
+    <div class="imgs">
+        <img src="img/1.jpg" height="525" width="700"/>
+    </div>
+    <button class="prev"> < </button>
+    <button class="next"> > </button>
+    <div>美女<span>1</span></div>
+    <div class="bottom">
+        <i class="active"></i>
+        <i></i>
+        <i></i>
+        <i></i>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var btnEl =document.getElementsByTagName("button");
+    var imgEl = document.getElementsByTagName("img");
+    var spanEl =document.getElementsByTagName("span");
+    var  iEl = document.getElementsByTagName("i");
+    var arr = ["img/1.jpg","img/2.jpg","img/3.jpg","img/4.jpg"];
+    var i =0;
+    btnEl[1].onclick = function(){
+         i++;
+        if(i>3){
+            i=0
+        }
+        imgEl[0].src = arr[i];
+        spanEl[0].innerHTML = i+1;
+        spanEl[1].innerHTML = i+1;
+        for( var j = 0;j<4;j++){
+            iEl[j].style.backgroundColor="";
+        }
+        iEl[i].style.backgroundColor="yellow";
+    };
+
+    btnEl[0].onclick = function(){
+        i--;
+        if(i<0){
+            i=3
+        }
+        imgEl[0].src = arr[i];
+        spanEl[0].innerHTML = i+1;
+        spanEl[1].innerHTML = i+1;
+        for( var j = 0;j<4;j++){
+            iEl[j].style.backgroundColor="";
+        }
+        iEl[i].style.backgroundColor="yellow";
+    };
+
+    iEl[0].style.backgroundColor="yellow";
+</script>
+</body>
+</html>
